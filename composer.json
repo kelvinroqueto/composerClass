@@ -1,0 +1,43 @@
+{
+    "name": "kelvinroqueto/buscador-cursos",
+    "description": "Projeto que busca os cursos no site da Alura",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Kelvin Roqueto",
+            "email": "kelvin_roqueto@hotmail.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^7.2",
+        "symfony/dom-crawler": "^5.2",
+        "symfony/css-selector": "^5.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Alura\\BuscadorDeCursos\\": "src/"
+        },
+        "files": ["functions.php"]
+    },
+    "require-dev": {
+        "phan/phan": "^3.2",
+        "squizlabs/php_codesniffer": "^3.5",
+        "phpunit/phpunit": "^9.5"
+    },
+    "scripts":{
+        "test": "phpunit tests\\TestBuscadorDeCursos.php",
+        "cs": "phpcs --standard=PSR12 src\\",
+        "phan": "phan --allow-polyfill-parser",
+        "check": [
+            "@phan",
+            "@cs",
+            "@test"
+        ],
+        "post-update-cmd": [
+            "@test"
+        ]
+    },
+    "scripts-descriptions": {
+        "check": "Rodar scripts PHAN, CS E TEST"
+    }
+}
